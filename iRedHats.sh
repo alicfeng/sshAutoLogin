@@ -1,7 +1,7 @@
 #!/bin/bash
 # Author   :    AlicFeng
 # Email    :    a@samego.com
-# Github   :    https://github.com/alicfeng/sshIntelligenceAutoLogin
+# Github   :    https://github.com/alicfeng/sshAutoLogin
 
 
 if [ ${UID} != 0 ]; then
@@ -23,8 +23,9 @@ type expect >/dev/null 2>&1 || yum install expect -y >/dev/null 2>&1
 type toilet >/dev/null 2>&1 || yum install toilet -y >/dev/null 2>&1
 type toilet >/dev/null 2>&1 || yum install wget -y >/dev/null 2>&1
 
-wget -o /usr/local/bin/ssha https://raw.githubusercontent.com/alicfeng/sshAutoLogin/master/ssha
-chmod a+x /usr/local/bin/ssha
-toilet -f mono12 -F gay "enjoy ssha"  -t
-ssha -h
-rm $0
+wget -O /usr/local/bin/ssha https://raw.githubusercontent.com/alicfeng/sshAutoLogin/master/ssha && {
+    chmod a+x /usr/local/bin/ssha
+    ssha -h
+    toilet -f mono12 -F gay "enjoy ssha"  -t
+    rm $0   
+}

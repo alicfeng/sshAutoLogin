@@ -44,7 +44,7 @@ function list() {
 
 function usage() {
     echo "usege:"
-    echo "ssTool [-h] [-l] [-f <server alias>]"
+    echo "ssha [-h] [-l] [-s <server alias>]"
     exit 0
 }
 
