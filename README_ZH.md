@@ -1,8 +1,11 @@
 # sshAutoLogin
 [English](https://github.com/alicfeng/sshAutoLogin) 
+
 **It can make your ssh login simply as well as efficiently on Mac or Linux.**
+
 在Mac or Linux 系统上[翻译出错~help me](https://translate.google.cn), we are frequently using ssh login remote server by terminal. We will find a headache that is 
  often entering a repetitive command line. Fuck~ it’s a waste of time!Maybe you cloud write configure of alias on profile. enenen~  Finally, I determined to write a time-saving shell.Beginning with university stage.
+
 ___
 
 它有什么特点或好处呢
@@ -13,8 +16,11 @@ ___
 - 时间是生命呐
 
 ___
+
 - **使用**
+
 > 查看帮助信息
+
 ~~~shell
 ➜  ~ ssha -h
 usege:
@@ -22,6 +28,7 @@ ssha [-h] [-l] [-s <server alias>]
 ~~~
 
 > 查看配置的服务器信息列表
+
 ~~~shell
 ➜  ~ ssha -l
 Index	Description		Port	Host		Username	Password|SecretKeyFile
@@ -40,6 +47,7 @@ Index	Description		Port	Host		Username	Password|SecretKeyFile
 ~~~
 
 > 快捷登录
+
 ~~~
 ➜  ~ ssha -s 0
 ┌────────────────────────────────────────┐
@@ -56,6 +64,7 @@ successfully logined 【alicfengPC】
 ~~~
 
 ___
+
 - **安装**
 > Mac系统
 ~~~shell
@@ -71,6 +80,8 @@ ___
 ~~~shell
 ➜  ~ curl -sSL https://raw.githubusercontent.com/alicfeng/sshAutoLogin/master/Redhats.sh | bash
 ~~~
+
+___
 
 - **配置说明**
 > 每一个单元配置长什么样呢？
@@ -100,6 +111,7 @@ PasswordOrKey=password
 0 directories, 4 files
 ~~~
 
+___
 
 ~~~shell                                                                                                                                                    
  ▄▄▄▄▄▄▄▄               ██                                                       ▄▄                            ▄▄▄▄▄▄▄▄                      ▄▄▄▄     

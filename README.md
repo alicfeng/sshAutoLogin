@@ -1,8 +1,11 @@
 # sshAutoLogin
 [中文](https://github.com/alicfeng/sshAutoLogin/blob/master/README_ZH.md) 
+
 **It can make your ssh login simply as well as efficiently on Mac or LInux.**
+
 On Mac or Linux system, we are frequently using ssh login remote server by terminal. We will find a headache that is 
  often entering a repetitive command line. Fuck~ it’s a waste of time!Maybe you cloud write configure of alias on profile. enenen~  Finally, I determined to write a time-saving shell.Beginning with university stage.
+
 ___
 
 ssha Tool Characteristics
@@ -13,8 +16,10 @@ ssha Tool Characteristics
 - Saving time
 
 ___
+
 - **Easy to use**
 > help info
+
 ~~~shell
 ➜  ~ ssha -h
 usege:
@@ -56,6 +61,7 @@ successfully logined 【alicfengPC】
 ~~~
 
 ___
+
 - **Simply to install**
 > For Mac System
 ~~~shell
@@ -71,6 +77,8 @@ ___
 ~~~shell
 ➜  ~ curl -sSL https://raw.githubusercontent.com/alicfeng/sshAutoLogin/master/Redhats.sh | bash
 ~~~
+
+___
 
 - **Scalability configuration**
 > example server info configure file
