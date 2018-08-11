@@ -1,27 +1,27 @@
 # sshAutoLogin
-[中文](https://github.com/alicfeng/sshAutoLogin/blob/master/README_ZH.md) 
-**It can make your ssh login simply as well as efficiently on Mac or LInux.**
-On Mac or Linux system, we are frequently using ssh login remote server by terminal. We will find a headache that is 
+[English](https://github.com/alicfeng/sshAutoLogin) 
+**It can make your ssh login simply as well as efficiently on Mac or Linux.**
+在Mac or Linux 系统上[翻译出错~help me](https://translate.google.cn), we are frequently using ssh login remote server by terminal. We will find a headache that is 
  often entering a repetitive command line. Fuck~ it’s a waste of time!Maybe you cloud write configure of alias on profile. enenen~  Finally, I determined to write a time-saving shell.Beginning with university stage.
 ___
 
-ssha Tool Characteristics
-- Scalability configuration
-- Automatic interaction login
-- Support password and SecretKeyFile method
-- Support Mac and Linux
-- Saving time
+它有什么特点或好处呢
+- 扩展性、配置化
+- 自动交互登录
+- 支持密码以及秘钥文件
+- 支持Mac以及Linux
+- 时间是生命呐
 
 ___
-- **Easy to use**
-> help info
+- **使用**
+> 查看帮助信息
 ~~~shell
 ➜  ~ ssha -h
 usege:
 ssha [-h] [-l] [-s <server alias>]
 ~~~
 
-> see server list
+> 查看配置的服务器信息列表
 ~~~shell
 ➜  ~ ssha -l
 Index	Description		Port	Host		Username	Password|SecretKeyFile
@@ -39,7 +39,7 @@ Index	Description		Port	Host		Username	Password|SecretKeyFile
 └────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ~~~
 
-> login sameone server
+> 快捷登录
 ~~~
 ➜  ~ ssha -s 0
 ┌────────────────────────────────────────┐
@@ -56,24 +56,24 @@ successfully logined 【alicfengPC】
 ~~~
 
 ___
-- **Simply to install**
-> For Mac System
+- **安装**
+> Mac系统
 ~~~shell
 ➜  ~ curl -sSL https://raw.githubusercontent.com/alicfeng/sshAutoLogin/master/iMac.sh | bash
 ~~~
 
-> For Debian
+> Debian系列
 ~~~shell
 ➜  ~ curl -sSL https://raw.githubusercontent.com/alicfeng/sshAutoLogin/master/iDebian.sh | bash
 ~~~
 
-> For Redhats
+> Redhats系列
 ~~~shell
 ➜  ~ curl -sSL https://raw.githubusercontent.com/alicfeng/sshAutoLogin/master/Redhats.sh | bash
 ~~~
 
-- **Scalability configuration**
-> example server info configure file
+- **配置说明**
+> 每一个单元配置长什么样呢？
 ~~~ini
 Index=0
 Name=hostname
@@ -83,12 +83,12 @@ User=alic
 PasswordOrKey=password
 ~~~
 
-> default configure dir
+> 默认的配置目录路径
 ~~~shell
 ~/.ssha/
 ~~~
 
-> configure dir tree
+> 你看看我的示例目录Tree
 ~~~shell
 ➜  .ssha tree
 .
@@ -98,6 +98,19 @@ PasswordOrKey=password
 └── 3_68.120.80.68.ini
 
 0 directories, 4 files
+~~~
+
+
+~~~shell                                                                                                                                                    
+ ▄▄▄▄▄▄▄▄               ██                                                       ▄▄                            ▄▄▄▄▄▄▄▄                      ▄▄▄▄     
+ ██▀▀▀▀▀▀               ▀▀                                                       ██                            ▀▀▀██▀▀▀                      ▀▀██     
+ ██        ██▄████▄   ████      ▄████▄   ▀██  ███            ▄▄█████▄  ▄▄█████▄  ██▄████▄   ▄█████▄               ██      ▄████▄    ▄████▄     ██     
+ ███████   ██▀   ██     ██     ██▀  ▀██   ██▄ ██             ██▄▄▄▄ ▀  ██▄▄▄▄ ▀  ██▀   ██   ▀ ▄▄▄██               ██     ██▀  ▀██  ██▀  ▀██    ██     
+ ██        ██    ██     ██     ██    ██    ████▀              ▀▀▀▀██▄   ▀▀▀▀██▄  ██    ██  ▄██▀▀▀██               ██     ██    ██  ██    ██    ██     
+ ██▄▄▄▄▄▄  ██    ██     ██     ▀██▄▄██▀     ███              █▄▄▄▄▄██  █▄▄▄▄▄██  ██    ██  ██▄▄▄███               ██     ▀██▄▄██▀  ▀██▄▄██▀    ██▄▄▄  
+ ▀▀▀▀▀▀▀▀  ▀▀    ▀▀     ██       ▀▀▀▀       ██                ▀▀▀▀▀▀    ▀▀▀▀▀▀   ▀▀    ▀▀   ▀▀▀▀ ▀▀               ▀▀       ▀▀▀▀      ▀▀▀▀       ▀▀▀▀  
+                     ████▀                ███                                                                                                         
+                                                                                                                                                      
 ~~~
 
 

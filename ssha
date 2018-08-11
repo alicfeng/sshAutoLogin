@@ -12,7 +12,7 @@ if [ $SSH_INTELLIGENCE_AUTO_LOGIN_CONFIGURE_DIR ]; then
 	if [ -d $SSH_INTELLIGENCE_AUTO_LOGIN_CONFIGURE_DIR ];then
 		# Traversing each configuration
 		for config_file in $SSH_INTELLIGENCE_AUTO_LOGIN_CONFIGURE_DIR/*;do 
-			if [ "${config_file##*.}"x = "ini"x ]||[ "${config_file#*.}"x = "conf"x ];then
+			if [ "${config_file##*.}"x = "ini"x ]||[ "${config_file##*.}"x = "conf"x ];then
     				while read line_configure;do
                         eval $line_configure
 					done < $config_file
@@ -33,11 +33,11 @@ server_list_length=${#server_list[*]}
 
 # list server
 function list() {
-    echo -e "index\tdescription\t\tport\thost\t\tusername\tpassword|secret_key_file"
+    echo -e "Index\tDescription\t\tPort\tHost\t\tUsername\tPassword|SecretKeyFile"
     for ((i=0;i<${server_list_length};i++));do
         servers=(${server_list[$i]})
         serverIndex=$(($i+1))
-        echo -e "${servers[0]}\t${servers[1]}\t\t${servers[2]}\t${servers[3]}\t${servers[4]}\t${servers[5]}\t"| toilet -f term -F border --gay
+        echo -e "${servers[0]}\t${servers[1]}\t\t${servers[2]}\t${servers[3]}\t${servers[4]}\t${servers[5]}\t"| toilet -f term -F border -t --gay
     done
     exit 0
 }
