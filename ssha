@@ -1,0 +1,112 @@
+#!/bin/bash
+# Author   :    AlicFeng
+# Email    :    a@samego.com
+# Github   :    https://github.com/alicfeng/sshAutoLogin
+
+
+server_list=()
+SSH_INTELLIGENCE_AUTO_LOGIN_CONFIGURE_DIR=~/.ssha	
+# load include server list configure
+if [ $SSH_INTELLIGENCE_AUTO_LOGIN_CONFIGURE_DIR ]; then
+	# Determine whether the configuration folder exists
+	if [ -d $SSH_INTELLIGENCE_AUTO_LOGIN_CONFIGURE_DIR ];then
+		# Traversing each configuration
+		for config_file in $SSH_INTELLIGENCE_AUTO_LOGIN_CONFIGURE_DIR/*;do 
+			if [ "${config_file##*.}"x = "ini"x ]||[ "${config_file#*.}"x = "conf"x ];then
+    				while read line_configure;do
+                        eval $line_configure
+					done < $config_file
+                    server_list[${#server_list[*]}]="${Index} ${Name} ${Host} ${Port} ${User} ${PasswordOrKey}"
+			else
+				echo "file not rule" && exit 1
+			fi
+		done
+	else
+		echo  "SSH_INTELLIGENCE_AUTO_LOGIN_CONFIGURE_DIR nothing configure files" && exit 1
+	fi
+else
+	echo -e "Please setting SSH_INTELLIGENCE_AUTO_LOGIN_CONFIGURE_DIR \nmkdir ~/.ssha" && exit 1
+fi
+
+# server length
+server_list_length=${#server_list[*]}
+
+# list server
+function list() {
+    echo -e "index\tdescription\t\tport\thost\t\tusername\tpassword|secret_key_file"
+    for ((i=0;i<${server_list_length};i++));do
+        servers=(${server_list[$i]})
+        serverIndex=$(($i+1))
+        echo -e "${servers[0]}\t${servers[1]}\t\t${servers[2]}\t${servers[3]}\t${servers[4]}\t${servers[5]}\t"| toilet -f term -F border --gay
+    done
+    exit 0
+}
+
+function usage() {
+    echo "usege:"
+    echo "ssTool [-h] [-l] [-f <server alias>]"
+    exit 0
+}
+
+function login(){
+    server=(${server_list[$1]})
+    echo "$USER logging into the【${server[1]}】 server"| toilet -f term -F border --gay
+
+	command="
+        expect {
+                \"*assword\" {set timeout 6000; send \"${server[5]}\n\"; exp_continue ; sleep 3; }
+                \"*passphrase\" {set timeout 6000; send \"${server[5]}\r\n\"; exp_continue ; sleep 3; }
+                \"yes/no\" {send \"yes\n\"; exp_continue;}
+                \"Last*\" {  send_user \"\nsuccessfully logined 【${server[1]}】\n\";}
+        }
+       interact
+    ";
+   pem=${server[5]}
+   if [ -f "$pem" ]
+   then
+	expect -c "
+		spawn ssh -p ${server[2]} -i ${server[5]} ${server[3]}@${server[2]}
+		${command}
+	"
+   else
+	expect -c "
+		spawn ssh -p ${server[3]} ${server[4]}@${server[2]}
+		${command}
+	"
+   fi
+    echo -e "\t$USER logged out the【${server[1]}】 server\t" | toilet -f term -F border --gay
+}
+# clear screen
+clear
+while getopts hls: ARGS  
+do  
+case $ARGS in   
+    s)
+        login $OPTARG
+        ;;
+    l)
+        list
+        ;;
+    h)  
+        usage
+        ;;  
+    *)  
+        usage
+        ;;
+esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
