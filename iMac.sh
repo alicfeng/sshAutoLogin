@@ -15,7 +15,7 @@ echo -e "The script is installing the program,Please wating ..."
 configureDir=~/.ssha
 if [ ! -d $configureDir ];then
     mkdir ~/.ssha
-    echo -e "Index=0\nName=localhost\tHost=127.0.0.1\tport=22\tUser=root\tPasswordOrKey=password" >> ~/.ssha/0_localhost.ini
+    echo -e "Index=0\nName=localhost\nHost=127.0.0.1\nPort=22\nUser=root\nPasswordOrKey=password" >> ~/.ssha/0_localhost.ini
 fi
 
 # install dependence
